@@ -1,0 +1,59 @@
+<html lang="en">
+    <head>
+        <title> Code my Table v1.0</title>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+         <link rel="stylesheet" href="css/site.css">
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="row">
+                 <div class="col-md-2">
+                     <label for="databaseConnection">Database connection:</label>
+                </div>
+                 <div class="col-md-8">
+                     <input type="text" class="form-control" id="databaseConnection">
+                </div>
+                 <div class="col-md-2">
+                    <button type="button" class="btn btn-primary" id="btnGetTables">Get Tables</button>
+                </div>
+            </div>
+
+            <div class="container" id="databaseTables">
+
+            </div>
+        </div>
+    </body>
+</html>
+
+<script>
+$("#btnGetTables").click(function(){
+    CreateTablesTable();
+})
+
+function CreateTablesTable(){
+    var tablesTable = document.createElement('table');
+    // alert(tablesTable);
+    // tablesTable.addClass("table table-bordered table-hover");
+
+    for (var i = 1; i < 4; i++){
+        var tr = document.createElement('tr');   
+
+        var td1 = document.createElement('td');
+        var td2 = document.createElement('td');
+
+        var text1 = document.createTextNode('Text1');
+        var text2 = document.createTextNode('Text2');
+
+        td1.appendChild(text1);
+        td2.appendChild(text2);
+        tr.appendChild(td1);
+        tr.appendChild(td2);
+
+        tablesTable.appendChild(tr);
+    }
+
+    $("#databaseTables").append(tablesTable);
+}
+</script>
