@@ -3,7 +3,31 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26020.0
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMT.Repository", "CMT.Repository\CMT.Repository.csproj", "{B93DEF0D-B092-41FD-8336-130FF6701411}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMT.Dto", "CMT.Dto\CMT.Dto.csproj", "{BEA3E227-ED8B-42FB-85BB-A1ACD0B407CB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CMT.Api", "CMT.Api\CMT.Api.csproj", "{4A4A903E-F6EE-4195-B121-1D7B4D7A3F76}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B93DEF0D-B092-41FD-8336-130FF6701411}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B93DEF0D-B092-41FD-8336-130FF6701411}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B93DEF0D-B092-41FD-8336-130FF6701411}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B93DEF0D-B092-41FD-8336-130FF6701411}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BEA3E227-ED8B-42FB-85BB-A1ACD0B407CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEA3E227-ED8B-42FB-85BB-A1ACD0B407CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEA3E227-ED8B-42FB-85BB-A1ACD0B407CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEA3E227-ED8B-42FB-85BB-A1ACD0B407CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A4A903E-F6EE-4195-B121-1D7B4D7A3F76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A4A903E-F6EE-4195-B121-1D7B4D7A3F76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A4A903E-F6EE-4195-B121-1D7B4D7A3F76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A4A903E-F6EE-4195-B121-1D7B4D7A3F76}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
