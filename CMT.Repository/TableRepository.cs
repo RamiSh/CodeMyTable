@@ -9,7 +9,7 @@ using Oracle.ManagedDataAccess.Client;
 
 namespace CMT.Repository
 {
-    public class TableRepository : BaseRepository, ITableInterface
+    public class TableRepository : BaseRepository, ITableRepository
     {
         public TableRepository(string connection)
         {

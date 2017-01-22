@@ -146,6 +146,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\TableController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -163,10 +164,19 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CMT.Dto\CMT.Dto.csproj">
+      <Project>{bea3e227-ed8b-42fb-85bb-a1acd0b407cb}</Project>
+      <Name>CMT.Dto</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CMT.Repository\CMT.Repository.csproj">
+      <Project>{B93DEF0D-B092-41FD-8336-130FF6701411}</Project>
+      <Name>CMT.Repository</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

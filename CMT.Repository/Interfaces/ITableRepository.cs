@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CMT.Repository.Interfaces
 {
-    public interface ITableInterface
+    public interface ITableRepository
     {
         IEnumerable<TableInfo> GetTables();
     }
