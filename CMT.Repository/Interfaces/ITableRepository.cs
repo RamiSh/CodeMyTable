@@ -10,5 +10,6 @@ namespace CMT.Repository.Interfaces
     public interface ITableRepository
     {
         IEnumerable<TableInfo> GetTables();
+        IEnumerable<ColumnInfo> GetColumns(string tableName, string tableOwner);
     }
 }

@@ -9,6 +9,7 @@ namespace CMT.Dto
     public class TableInfo
     {
         public string Name { get; set; }
+        public string Owner { get; set; }
         public IEnumerable<ColumnInfo> Columns { get; set; }
 
     }

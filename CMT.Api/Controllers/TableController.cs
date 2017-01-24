@@ -27,5 +27,15 @@ namespace CMT.Api.Controllers
 
             return Ok(tableRepository.GetTables());
         }
+
+        [Route("{tableName:string}/columns/{owner:string}")]
+        [HttpGet]
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
+        public IHttpActionResult GetColumns(string connection)
+        {
+            ITableRepository tableRepository = new TableRepository(connection);
+
+            return Ok(tableRepository.GetTables());
+        }
     }
 }

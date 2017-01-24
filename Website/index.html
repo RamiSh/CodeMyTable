@@ -1,11 +1,13 @@
 <html lang="en">
     <head>
         <title> Code my Table v1.0</title>
-        <link rel="stylesheet" href="css/dataTables.min.css">
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/dataTables.bootstrap.min.css">
         <link rel="stylesheet" href="css/site.css">
         <script src="js/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
-        <script src="js/dataTables.min.js"></script>
+        <script src="js/jquery.dataTables.min.js"></script>
+        <script src="js/dataTables.bootstrap.min.js"></script>
     </head>
     <body>
         <div class="container">
@@ -14,7 +16,7 @@
                      <label for="databaseConnection">Database connection:</label>
                 </div>
                  <div class="col-md-8">
-                     <input type="text" class="form-control" id="databaseConnection">
+                     <input type="text" class="form-control" id="databaseConnection" value="Data source= (DESCRIPTION = (ADDRESS_LIST = (ADDRESS = (PROTOCOL = TCP)(HOST = DEV-knowledge.imo-online.com)(PORT = 1521)) ) (CONNECT_DATA = (SERVICE_NAME = PRDNAVAA.useless.domain) ) );User Id=concept;Password=prkonceptod">
                 </div>
                  <div class="col-md-2">
                     <button type="button" class="btn btn-primary" id="btnGetTables">Get Tables</button>
@@ -22,10 +24,9 @@
             </div>
 
             <div class="container" id="databaseTablesContainer">
-                <table  id="databaseTables">
+                <table  id="databaseTables" class="table table-condensed table-hover table-bordered">
                   
-                    <tbody>
-                    </tbody>
+                    
                 </table>
             </div>
         </div>
@@ -35,6 +36,7 @@
 <script>
 $("#btnGetTables").click(function(){
    $('#btnGetTables').text("Loading...");
+   $('#btnGetTables').prop("disabled",true);
     $.ajax({
         type:"GET",
         url:"http://localhost:64361/api/v1/table?connection=" + $("#databaseConnection").val(),
@@ -43,6 +45,7 @@ $("#btnGetTables").click(function(){
         success: function (data, status, jqXHR) {
              CreateTablesTable(data);
              $('#btnGetTables').text("Get Tables");
+             $('#btnGetTables').prop("disabled",false);
          }
     }
     );
@@ -50,13 +53,23 @@ $("#btnGetTables").click(function(){
 
 function CreateTablesTable(result){
     $('#databaseTables tbody > tr').remove();
+    $('#databaseTables thead').remove();
+    $('#databaseTables tfoot').remove();
 
     var tableDom="" ;
     var tablesTable = $("#databaseTables");
-      tablesTable.append("<thead><tr><th>Name</th></tr></thead><tfoot><tr><th>Name</th></tr></tfoot>");
+      tablesTable.append("<thead>" +
+                            "<tr><th>Name</th>" + 
+                            "<th>Owner</th></tr>" +
+                        "</thead>" +
+                        "<tfoot>" + 
+                        "<tr><th>Name</th>" +
+                        "<th>Owner</th></tr>" +
+                        "</tfoot>" + 
+                        "<tbody></tbody>");
      $.each(result, function(i,table){   
         tableDom = '<input type="checkbox" id="'+table.Name+'" value="'+table.Name+'"><label for="'+table.Name+'">'+table.Name+'</label></br>'; 
-        tablesTable.append("<tr><td>" + tableDom + "</td></tr>");
+        tablesTable.append("<tr><td>" + tableDom + "</td><td>"+ table.Owner+"</td></tr>");
      }  );
 
       $('#databaseTables').DataTable();
