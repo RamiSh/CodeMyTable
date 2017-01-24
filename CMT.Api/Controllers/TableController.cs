@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace CMT.Api.Controllers
 {
@@ -19,6 +20,7 @@ namespace CMT.Api.Controllers
 
         [Route("")]
         [HttpGet]
+        [EnableCors(origins: "*", headers: "*", methods: "*")]
         public IHttpActionResult GetTables(string connection)
         {
             ITableRepository tableRepository = new TableRepository(connection);

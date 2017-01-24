@@ -5,3 +5,13 @@ body{
 #databaseConnection{
     width:700px;
 }
+
+.hide {
+    display: none;
+}
+
+#databaseTablesContainer{
+        margin-top: 20px;
+    border: 1px solid;
+    padding: 10px;
+}

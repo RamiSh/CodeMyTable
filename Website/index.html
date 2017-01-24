@@ -1,10 +1,11 @@
 <html lang="en">
     <head>
         <title> Code my Table v1.0</title>
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-         <link rel="stylesheet" href="css/site.css">
+        <link rel="stylesheet" href="css/dataTables.min.css">
+        <link rel="stylesheet" href="css/site.css">
         <script src="js/jquery.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
+        <script src="js/dataTables.min.js"></script>
     </head>
     <body>
         <div class="container">
@@ -20,8 +21,12 @@
                 </div>
             </div>
 
-            <div class="container" id="databaseTables">
-
+            <div class="container" id="databaseTablesContainer">
+                <table  id="databaseTables">
+                  
+                    <tbody>
+                    </tbody>
+                </table>
             </div>
         </div>
     </body>
@@ -29,31 +34,31 @@
 
 <script>
 $("#btnGetTables").click(function(){
-    CreateTablesTable();
+   $('#btnGetTables').text("Loading...");
+    $.ajax({
+        type:"GET",
+        url:"http://localhost:64361/api/v1/table?connection=" + $("#databaseConnection").val(),
+         contentType: "application/json; charset=utf-8",
+         dataType: "json",
+        success: function (data, status, jqXHR) {
+             CreateTablesTable(data);
+             $('#btnGetTables').text("Get Tables");
+         }
+    }
+    );
 })
 
-function CreateTablesTable(){
-    var tablesTable = document.createElement('table');
-    // alert(tablesTable);
-    // tablesTable.addClass("table table-bordered table-hover");
+function CreateTablesTable(result){
+    $('#databaseTables tbody > tr').remove();
 
-    for (var i = 1; i < 4; i++){
-        var tr = document.createElement('tr');   
+    var tableDom="" ;
+    var tablesTable = $("#databaseTables");
+      tablesTable.append("<thead><tr><th>Name</th></tr></thead><tfoot><tr><th>Name</th></tr></tfoot>");
+     $.each(result, function(i,table){   
+        tableDom = '<input type="checkbox" id="'+table.Name+'" value="'+table.Name+'"><label for="'+table.Name+'">'+table.Name+'</label></br>'; 
+        tablesTable.append("<tr><td>" + tableDom + "</td></tr>");
+     }  );
 
-        var td1 = document.createElement('td');
-        var td2 = document.createElement('td');
-
-        var text1 = document.createTextNode('Text1');
-        var text2 = document.createTextNode('Text2');
-
-        td1.appendChild(text1);
-        td2.appendChild(text2);
-        tr.appendChild(td1);
-        tr.appendChild(td2);
-
-        tablesTable.appendChild(tr);
-    }
-
-    $("#databaseTables").append(tablesTable);
+      $('#databaseTables').DataTable();
 }
 </script>
